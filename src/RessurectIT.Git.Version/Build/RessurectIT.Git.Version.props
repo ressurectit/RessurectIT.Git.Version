@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <GitArgBranchName></GitArgBranchName>
+        <GitArgBuildNumber></GitArgBuildNumber>
+        <GitArgTagPrefix>v</GitArgTagPrefix>
+        <GitArgIgnoreBranchPrefix>[a-z]+/|[a-z]+-\d+/|[a-z]-[a-z]+-\d+/</GitArgIgnoreBranchPrefix>
+        <GitArgPre>true</GitArgPre>
+        <GitArgSuffix>pre</GitArgSuffix>
+        <GitArgCurrentVersion></GitArgCurrentVersion>
+        <GitVersionToolWorkingDir>$(MSBuildThisFileDirectory)..\tools\</GitVersionToolWorkingDir>
+        <GitVersionTool>RessurectIT.Git.Version.exe</GitVersionTool>
+        <GitVersionNpmRegistry>https://api.nuget.org/v3/index.json</GitVersionNpmRegistry>
+    </PropertyGroup>
+</Project>

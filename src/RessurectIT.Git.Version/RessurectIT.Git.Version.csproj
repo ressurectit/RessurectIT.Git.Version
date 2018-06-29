@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\Directory.Build.props" />
+
+    <!-- BASIC INFO -->
+    <PropertyGroup>
+        <AssemblyName>RessurectIT.Git.Version</AssemblyName>
+        <Description>RessurectIT helper tool for automatically generated version from git</Description>
+    </PropertyGroup>
+
+    <!-- BUILD OPTIONS -->
+    <PropertyGroup>
+        <OutputPath>bin\</OutputPath>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <!-- FRAMEWORK -->
+    <PropertyGroup>
+        <TargetFrameworks>net461</TargetFrameworks>
+    </PropertyGroup>
+
+    <!-- FILES -->
+    <ItemGroup>
+        <None Include="bin/net461/*.*" Pack="true" PackagePath="tools\" />
+        <None Include="Build/*.*" Pack="true" PackagePath="build\" />
+        <None Include="Build/*.*" Pack="true" PackagePath="buildCrossTargeting\" />
+        <None Include="package.json" Pack="true" PackagePath="tools\" />
+        <None Include="getVersion.js" Pack="true" PackagePath="tools\" />
+    </ItemGroup>
+
+    <!-- PACKAGING -->
+    <PropertyGroup>
+        <PackageTags>git;version;tool</PackageTags>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+
+        <PackageReleaseNotes>
+            - initial version that supports generating app version from git, using npm
+        </PackageReleaseNotes>
+    </PropertyGroup>
+
+    <!-- DEPENDENCIES COMMON -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="$(MicrosoftAspNetCoreNodeServicesPackageVersion)" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="$(MicrosoftExtensionsConfigurationCommandLinePackageVersion)" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="$(MicrosoftExtensionsConfigurationEnvironmentVariablesPackageVersion)" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$(MicrosoftExtensionsDependencyInjectionPackageVersion)" PrivateAssets="All" />
+        <PackageReference Include="RessurectIT.NuGet.Deployment" Version="$(RessurectITNuGetDeploymentPackageVersion)" PrivateAssets="All" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+<Project>
+    <!-- PACKAGE VERSIONS -->
+    <PropertyGroup Label="Package Versions">
+        <RessurectITNuGetDeploymentPackageVersion>2.1.2</RessurectITNuGetDeploymentPackageVersion>
+        <MicrosoftAspNetCoreNodeServicesPackageVersion>2.1.1</MicrosoftAspNetCoreNodeServicesPackageVersion>
+        <MicrosoftExtensionsConfigurationCommandLinePackageVersion>2.1.1</MicrosoftExtensionsConfigurationCommandLinePackageVersion>
+        <MicrosoftExtensionsConfigurationEnvironmentVariablesPackageVersion>2.1.1</MicrosoftExtensionsConfigurationEnvironmentVariablesPackageVersion>
+        <MicrosoftExtensionsDependencyInjectionPackageVersion>2.1.1</MicrosoftExtensionsDependencyInjectionPackageVersion>
+    </PropertyGroup>
+</Project>

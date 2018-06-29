@@ -1,0 +1,11 @@
+{
+    "name": "ressurectit.git.version",
+    "version": "1.0.0",
+    "description": "",
+    "main": "getVersion.js",
+    "author": "kukjevov",
+    "license": "ISC",
+    "dependencies": {
+        "npm-git-version": "~1.0.3"
+    }
+}

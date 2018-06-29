@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <Target Name="EnsureNpmPackagesAreInstalled" BeforeTargets="GenerateGitVersion" Condition="!Exists('$(GitVersionToolWorkingDir)node_modules\.bin\ngv.cmd')">
+        <Exec Command="npm install --registry $(GitVersionNpmRegistry)" WorkingDirectory="$(GitVersionToolWorkingDir)" />
+    </Target>
+
+    <Target Name="GenerateGitVersion" BeforeTargets="PrepareForBuild">
+        <Message Text="Trying to generate version" />
+
+        <PropertyGroup>
+            <GitArgWorkingDirectory Condition="'$(GitArgWorkingDirectory)' == ''">$(ProjectDir)</GitArgWorkingDirectory>
+
+            <GitVersionToolArgs></GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgBranchName)' != ''"> --branchName "$(GitArgBranchName)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgBuildNumber)' != ''">$(GitVersionToolArgs) --buildNumber $(GitArgBuildNumber)</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgTagPrefix)' != ''">$(GitVersionToolArgs) --tagPrefix "$(GitArgTagPrefix)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgIgnoreBranchPrefix)' != ''">$(GitVersionToolArgs) --ignoreBranchPrefix "$(GitArgIgnoreBranchPrefix)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgPre)' != ''">$(GitVersionToolArgs) --pre $(GitArgPre)</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgSuffix)' != ''">$(GitVersionToolArgs) --suffix "$(GitArgSuffix)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgCurrentVersion)' != ''">$(GitVersionToolArgs) --currentVersion "$(GitArgCurrentVersion)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory $(GitArgWorkingDirectory)</GitVersionToolArgs>
+        </PropertyGroup>
+
+        <Exec Command="$(GitVersionToolWorkingDir)$(GitVersionTool) $(GitVersionToolArgs)" ConsoleToMSBuild="true" WorkingDirectory="$(GitVersionToolWorkingDir)">
+            <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
+        </Exec>
+
+        <PropertyGroup>
+            <In>$(Version)</In>
+            <Version>$([System.Text.RegularExpressions.Regex]::Match("$(In)", "\d+\.\d+\.\d+(-.*?\.\d+)?"))</Version>
+        </PropertyGroup>
+    </Target>
+</Project>
