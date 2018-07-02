@@ -6,6 +6,6 @@
     "author": "kukjevov",
     "license": "ISC",
     "dependencies": {
-        "npm-git-version": "~1.0.3"
+        "npm-git-version": "~1.0.4"
     }
 }
