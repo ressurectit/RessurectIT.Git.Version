@@ -62,7 +62,8 @@ namespace RessurectIT.Git.Version
                                                                             config.Pre,
                                                                             config.Suffix,
                                                                             config.TagPrefix,
-                                                                            config.WorkingDirectory
+                                                                            config.WorkingDirectory,
+                                                                            noStdOut = true
                                                                         });
 
                 Console.WriteLine(version);

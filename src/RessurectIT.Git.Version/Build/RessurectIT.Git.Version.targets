@@ -10,8 +10,8 @@
         <PropertyGroup>
             <GitArgWorkingDirectory Condition="'$(GitArgWorkingDirectory)' == ''">$(ProjectDir)</GitArgWorkingDirectory>
 
-            <GitVersionToolArgs>--noStdOut true</GitVersionToolArgs>
-            <GitVersionToolArgs Condition="'$(GitArgBranchName)' != ''">$(GitVersionToolArgs) --branchName "$(GitArgBranchName)"</GitVersionToolArgs>
+            <GitVersionToolArgs></GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgBranchName)' != ''"> --branchName "$(GitArgBranchName)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgBuildNumber)' != ''">$(GitVersionToolArgs) --buildNumber $(GitArgBuildNumber)</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgTagPrefix)' != ''">$(GitVersionToolArgs) --tagPrefix "$(GitArgTagPrefix)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgIgnoreBranchPrefix)' != ''">$(GitVersionToolArgs) --ignoreBranchPrefix "$(GitArgIgnoreBranchPrefix)"</GitVersionToolArgs>
