@@ -21,8 +21,8 @@ namespace RessurectIT.Git.Version
         public static async Task<int> Main(string[] args)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddEnvironmentVariables()
                 .AddCommandLine(args)
+                .AddEnvironmentVariables("AGV_")
                 .Build();
 
             Config config = new Config();
@@ -35,7 +35,7 @@ namespace RessurectIT.Git.Version
             ServiceProvider serviceProvider = services.BuildServiceProvider();
             INodeServices nodeServices = serviceProvider.GetRequiredService<INodeServices>();
 
-            if (!config.BuildNumber.HasValue)
+            if (config.BuildNumber.HasValue && config.BuildNumber.Value == -1)
             {
                 config.BuildNumber = long.Parse(DateTime.Now.ToString("yyyyddMMhhmmss"));
             }
