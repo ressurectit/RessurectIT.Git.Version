@@ -2,7 +2,7 @@
 <Project>
     <PropertyGroup>
         <GitArgBranchName></GitArgBranchName>
-        <GitArgBuildNumber></GitArgBuildNumber>
+        <GitArgBuildNumber>-1</GitArgBuildNumber>
         <GitArgTagPrefix>v</GitArgTagPrefix>
         <GitArgIgnoreBranchPrefix>[a-z]+/|[a-z]+-\d+/|[a-z]-[a-z]+-\d+/</GitArgIgnoreBranchPrefix>
         <GitArgPre>true</GitArgPre>

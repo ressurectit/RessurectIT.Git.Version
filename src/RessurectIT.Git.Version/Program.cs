@@ -37,7 +37,7 @@ namespace RessurectIT.Git.Version
 
             if (config.BuildNumber.HasValue && config.BuildNumber.Value == -1)
             {
-                config.BuildNumber = long.Parse(DateTime.Now.ToString("yyyyddMMhhmmss"));
+                config.BuildNumber = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss"));
             }
 
             if(string.IsNullOrWhiteSpace(config.WorkingDirectory))
