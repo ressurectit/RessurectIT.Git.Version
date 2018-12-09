@@ -4,11 +4,12 @@
         <Exec Command="npm install --registry $(GitVersionNpmRegistry)" WorkingDirectory="$(GitVersionToolWorkingDir)" />
     </Target>
 
-    <Target Name="GenerateGitVersion" BeforeTargets="PrepareForBuild">
+    <Target Name="GenerateGitVersion" BeforeTargets="GenerateNuspec;PrepareForBuild">
         <Message Text="Trying to generate version" />
 
         <PropertyGroup>
             <GitArgWorkingDirectory Condition="'$(GitArgWorkingDirectory)' == ''">$(ProjectDir)</GitArgWorkingDirectory>
+            <GitArgWorkingDirectory Condition="'$(GitArgWorkingDirectory)' == ''">$(MSBuildProjectDirectory)</GitArgWorkingDirectory>
 
             <GitVersionToolArgs></GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgBranchName)' != ''"> --branchName "$(GitArgBranchName)"</GitVersionToolArgs>
@@ -23,6 +24,7 @@
 
         <Exec Command="$(GitVersionToolWorkingDir)$(GitVersionTool) $(GitVersionToolArgs)" ConsoleToMSBuild="true" WorkingDirectory="$(GitVersionToolWorkingDir)">
             <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
+            <Output TaskParameter="ConsoleOutput" PropertyName="PackageVersion" />
         </Exec>
     </Target>
 </Project>
