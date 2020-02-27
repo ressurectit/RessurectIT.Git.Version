@@ -3,6 +3,7 @@ bin
 Logs
 node_modules
 .vs
+.include
 package-lock.json
 *~
 *.log

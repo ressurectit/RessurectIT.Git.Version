@@ -4,7 +4,7 @@
         <GitArgBranchName></GitArgBranchName>
         <GitArgBuildNumber>-1</GitArgBuildNumber>
         <GitArgTagPrefix>v</GitArgTagPrefix>
-        <GitArgIgnoreBranchPrefix>[a-z]+/|[a-z]+-\d+/|[a-z]-[a-z]+-\d+/</GitArgIgnoreBranchPrefix>
+        <GitArgIgnoreBranchPrefix>[a-z]+/|(?:[a-z]+-)+\d+/</GitArgIgnoreBranchPrefix>
         <GitArgPre>true</GitArgPre>
         <GitArgSuffix>pre</GitArgSuffix>
         <GitArgCurrentVersion></GitArgCurrentVersion>
