@@ -10,6 +10,6 @@
         <GitArgCurrentVersion></GitArgCurrentVersion>
         <GitVersionToolWorkingDir>$(MSBuildThisFileDirectory)..\tools\</GitVersionToolWorkingDir>
         <GitVersionTool>RessurectIT.Git.Version.exe</GitVersionTool>
-        <GitVersionNpmRegistry>https://api.nuget.org/v3/index.json</GitVersionNpmRegistry>
+        <GitVersionNpmRegistry>https://registry.npmjs.org</GitVersionNpmRegistry>
     </PropertyGroup>
 </Project>

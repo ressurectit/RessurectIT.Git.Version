@@ -19,10 +19,10 @@
             <GitVersionToolArgs Condition="'$(GitArgPre)' != ''">$(GitVersionToolArgs) --pre $(GitArgPre)</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgSuffix)' != ''">$(GitVersionToolArgs) --suffix "$(GitArgSuffix)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgCurrentVersion)' != ''">$(GitVersionToolArgs) --currentVersion "$(GitArgCurrentVersion)"</GitVersionToolArgs>
-            <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory $(GitArgWorkingDirectory)</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory "$(GitArgWorkingDirectory)</GitVersionToolArgs>
         </PropertyGroup>
 
-        <Exec Command="$(GitVersionToolWorkingDir)$(GitVersionTool) $(GitVersionToolArgs)" ConsoleToMSBuild="true" WorkingDirectory="$(GitVersionToolWorkingDir)">
+        <Exec Command="&quot;$(GitVersionToolWorkingDir)$(GitVersionTool)&quot; $(GitVersionToolArgs)" ConsoleToMSBuild="true" WorkingDirectory="$(GitVersionToolWorkingDir)">
             <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
             <Output TaskParameter="ConsoleOutput" PropertyName="PackageVersion" />
         </Exec>

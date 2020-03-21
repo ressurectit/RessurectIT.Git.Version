@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.0.6
+- *RessurectIT.Git.Version*
+    - fixed processing when user account directory or project directory contains spaces in path
+    - fixed default npm registry URL
+
 ## Version 1.0.5
 - *RessurectIT.Git.Version*
     - fixed generating version when creating Nuget package using *pack* target

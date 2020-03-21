@@ -31,7 +31,8 @@
         <IncludeBuildOutput>false</IncludeBuildOutput>
 
         <PackageReleaseNotes>
-            - fixed generating version when creating Nuget package using *pack* target
+            - fixed processing when user account directory or project directory contains spaces in path
+            - fixed default npm registry URL
         </PackageReleaseNotes>
     </PropertyGroup>
 
