@@ -43,7 +43,7 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="$(MicrosoftExtensionsConfigurationCommandLine)" PrivateAssets="All" />
         <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="$(MicrosoftExtensionsConfigurationEnvironmentVariables)" PrivateAssets="All" />
         <PackageReference Include="Node.js.redist" Version="$(Nodejsredist)" />
-        <!-- <PackageReference Include="RessurectIT.NuGet.Deployment" Version="$(RessurectITNuGetDeployment)" PrivateAssets="All" /> -->
+        <PackageReference Include="RessurectIT.NuGet.Deployment" Version="$(RessurectITNuGetDeployment)" PrivateAssets="All" />
     </ItemGroup>
 
     <!-- NPM INSTALL -->
