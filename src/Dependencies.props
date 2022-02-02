@@ -1,10 +1,14 @@
 <Project>
     <!-- PACKAGE VERSIONS -->
     <PropertyGroup Label="Package Versions">
-        <RessurectITNuGetDeploymentPackageVersion>2.1.4</RessurectITNuGetDeploymentPackageVersion>
-        <MicrosoftAspNetCoreNodeServicesPackageVersion>2.1.1</MicrosoftAspNetCoreNodeServicesPackageVersion>
-        <MicrosoftExtensionsConfigurationCommandLinePackageVersion>2.1.1</MicrosoftExtensionsConfigurationCommandLinePackageVersion>
-        <MicrosoftExtensionsConfigurationEnvironmentVariablesPackageVersion>2.1.1</MicrosoftExtensionsConfigurationEnvironmentVariablesPackageVersion>
-        <MicrosoftExtensionsDependencyInjectionPackageVersion>2.1.1</MicrosoftExtensionsDependencyInjectionPackageVersion>
+        <JeringJavascriptNodeJS>6.3.0</JeringJavascriptNodeJS>
+
+        <MicrosoftExtensionsConfigurationBinder>6.0.0</MicrosoftExtensionsConfigurationBinder>
+        <MicrosoftExtensionsConfigurationCommandLine>6.0.0</MicrosoftExtensionsConfigurationCommandLine>
+        <MicrosoftExtensionsConfigurationEnvironmentVariables>6.0.0</MicrosoftExtensionsConfigurationEnvironmentVariables>
+
+        <Nodejsredist>16.13.1</Nodejsredist>
+        
+        <RessurectITNuGetDeployment>3.0.0</RessurectITNuGetDeployment>
     </PropertyGroup>
 </Project>

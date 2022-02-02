@@ -1,5 +1,21 @@
 # Changelog
 
+## Version 2.0.0 (2020-02-02)
+
+### BREAKING CHANGES
+
+- *RessurectIT.Git.Version*
+    - no longer depends on preinstalled *NodeJS*
+    - new dependency `Jering.Javascript.NodeJS`
+    - new dependency `Node.js.redist`
+    - updated all dependecies to latest versions
+    - removed obsoleted dependencies
+
+### Bug Fixes
+
+- *RessurectIT.Git.Version*
+    - now correctly generates version only once per build and same version is used for nuget dependecies
+
 ## Version 1.0.6
 - *RessurectIT.Git.Version*
     - fixed processing when user account directory or project directory contains spaces in path

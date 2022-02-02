@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
+        <BuildVersionPath>buildVersion.txt</BuildVersionPath>
         <GitArgBranchName></GitArgBranchName>
         <GitArgBuildNumber>-1</GitArgBuildNumber>
         <GitArgTagPrefix>v</GitArgTagPrefix>
@@ -8,8 +9,9 @@
         <GitArgPre>true</GitArgPre>
         <GitArgSuffix>pre</GitArgSuffix>
         <GitArgCurrentVersion></GitArgCurrentVersion>
-        <GitVersionToolWorkingDir>$(MSBuildThisFileDirectory)..\tools\</GitVersionToolWorkingDir>
+        <GitVersionToolWorkingDir>$(MSBuildThisFileDirectory)../tools/</GitVersionToolWorkingDir>
         <GitVersionTool>RessurectIT.Git.Version.exe</GitVersionTool>
-        <GitVersionNpmRegistry>https://registry.npmjs.org</GitVersionNpmRegistry>
+        <NodeJsFolders>$(NuGetPackageFolders)</NodeJsFolders>
+        <NodeJsPath>node.js.redist/16.13.1/tools/win-x64/node.exe</NodeJsPath>
     </PropertyGroup>
 </Project>

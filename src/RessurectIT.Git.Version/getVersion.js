@@ -1,8 +1,8 @@
-var VersionsExtractor = require('npm-git-version').VersionsExtractor;
+const VersionsExtractor = require('npm-git-version').VersionsExtractor;
 
 module.exports = function (callback, options) 
 {
-    var extractor = new VersionsExtractor(options);
+    const extractor = new VersionsExtractor(options);
 
     extractor.process()
         .then(extractor =>

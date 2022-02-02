@@ -1,0 +1,1 @@
+Get-Item */*/node_modules,*/*/package-lock.json,*/*/bin,*/*/obj,*/*/out | ForEach-Object{Write-Host $_; Remove-Item $_ -Force -Recurse -ErrorAction SilentlyContinue}

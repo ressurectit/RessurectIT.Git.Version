@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <Target Name="EnsureNpmPackagesAreInstalled" BeforeTargets="GenerateGitVersion" Condition="!Exists('$(GitVersionToolWorkingDir)node_modules\.bin\ngv.cmd')">
-        <Exec Command="npm install --registry $(GitVersionNpmRegistry)" WorkingDirectory="$(GitVersionToolWorkingDir)" />
-    </Target>
-
-    <Target Name="GenerateGitVersion" BeforeTargets="GenerateNuspec;PrepareForBuild">
+    <Target Name="GenerateGitVersion" BeforeTargets="GetAssemblyVersion">
         <Message Text="Trying to generate version" />
 
         <PropertyGroup>
@@ -19,10 +15,21 @@
             <GitVersionToolArgs Condition="'$(GitArgPre)' != ''">$(GitVersionToolArgs) --pre $(GitArgPre)</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgSuffix)' != ''">$(GitVersionToolArgs) --suffix "$(GitArgSuffix)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgCurrentVersion)' != ''">$(GitVersionToolArgs) --currentVersion "$(GitArgCurrentVersion)"</GitVersionToolArgs>
-            <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory "$(GitArgWorkingDirectory)</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(NodeJsFolders)' != ''">$(GitVersionToolArgs) --nodeJsDirs "$(NodeJsFolders)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(NodeJsPath)' != ''">$(GitVersionToolArgs) --nodeJsPath "$(NodeJsPath)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory "$(GitArgWorkingDirectory) "</GitVersionToolArgs>
         </PropertyGroup>
+        
+        <Exec Command="&quot;$(GitVersionToolWorkingDir)$(GitVersionTool)&quot; $(GitVersionToolArgs)" ConsoleToMSBuild="true" WorkingDirectory="$(GitVersionToolWorkingDir)" Condition="'$(NgvProjectVersion)' == ''">
+            <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
+            <Output TaskParameter="ConsoleOutput" PropertyName="PackageVersion" />
+        </Exec>
 
-        <Exec Command="&quot;$(GitVersionToolWorkingDir)$(GitVersionTool)&quot; $(GitVersionToolArgs)" ConsoleToMSBuild="true" WorkingDirectory="$(GitVersionToolWorkingDir)">
+        <Exec Command="echo $(Version) > &quot;$(BuildVersionPath)&quot;" WorkingDirectory="$(BaseIntermediateOutputPath)"/>
+    </Target>
+
+    <Target Name="ObtainGeneratedGitVersion" BeforeTargets="GenerateNuspec;_GetProjectVersion">
+        <Exec Command="type &quot;$(BuildVersionPath)&quot;" ConsoleToMSBuild="true" WorkingDirectory="$(BaseIntermediateOutputPath)" Condition="Exists('$(BaseIntermediateOutputPath)$(BuildVersionPath)')">
             <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
             <Output TaskParameter="ConsoleOutput" PropertyName="PackageVersion" />
         </Exec>

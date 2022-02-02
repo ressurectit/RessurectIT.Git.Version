@@ -1,9 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
+using Jering.Javascript.NodeJS;
 using RessurectIT.Git.Version.Misc;
-using Microsoft.AspNetCore.NodeServices;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace RessurectIT.Git.Version
 {
@@ -22,18 +22,11 @@ namespace RessurectIT.Git.Version
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddCommandLine(args)
-                .AddEnvironmentVariables("AGV_")
                 .Build();
 
             Config config = new Config();
 
             configuration.Bind(config);
-
-            ServiceCollection services = new ServiceCollection();
-            services.AddNodeServices();
-
-            ServiceProvider serviceProvider = services.BuildServiceProvider();
-            INodeServices nodeServices = serviceProvider.GetRequiredService<INodeServices>();
 
             if (config.BuildNumber.HasValue && config.BuildNumber.Value == -1)
             {
@@ -47,24 +40,53 @@ namespace RessurectIT.Git.Version
 
             if(config.WorkingDirectory != null)
             {
-                config.WorkingDirectory = config.WorkingDirectory.TrimEnd('\\');
+                config.WorkingDirectory = config.WorkingDirectory.TrimEnd(' ').TrimEnd('\\').TrimEnd('/');
+            }
+
+            const string nodeExe = "node.exe";
+            string nodePath = nodeExe;
+
+            if (!string.IsNullOrEmpty(config.NodeJsPath))
+            {
+                nodePath = config.NodeJsPath;
+            }
+
+            if(!string.IsNullOrEmpty(config.NodeJsDirs))
+            {
+                string[] dirs = config.NodeJsDirs.Split(';');
+
+                foreach (string dir in dirs)
+                {
+                    string path = Path.Combine(dir, nodePath);
+
+                    if (File.Exists(path))
+                    {
+                        StaticNodeJSService.Configure<NodeJSProcessOptions>(options => options.ExecutablePath = path);
+
+                        break;
+                    }
+                }
             }
 
             try
             {
-                string version = await nodeServices.InvokeAsync<string>("./getVersion",
-                                                                        new
-                                                                        {
-                                                                            config.BranchName,
-                                                                            config.BuildNumber,
-                                                                            config.CurrentVersion,
-                                                                            config.IgnoreBranchPrefix,
-                                                                            config.Pre,
-                                                                            config.Suffix,
-                                                                            config.TagPrefix,
-                                                                            config.WorkingDirectory,
-                                                                            noStdOut = true
-                                                                        });
+                string version = await StaticNodeJSService.InvokeFromFileAsync<string>("getVersion.js",
+                                                                                       null,
+                                                                                       new object[]
+                                                                                       {
+                                                                                           new
+                                                                                           {
+                                                                                               config.BranchName,
+                                                                                               config.BuildNumber,
+                                                                                               config.CurrentVersion,
+                                                                                               config.IgnoreBranchPrefix,
+                                                                                               config.Pre,
+                                                                                               config.Suffix,
+                                                                                               config.TagPrefix,
+                                                                                               config.WorkingDirectory,
+                                                                                               noStdOut = true
+                                                                                           }
+                                                                                       });
 
                 Console.WriteLine(version);
             }

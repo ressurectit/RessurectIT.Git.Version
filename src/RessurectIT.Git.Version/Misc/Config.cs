@@ -76,5 +76,23 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// Semicolon separated paths to folders where can be node.exe located
+        /// </summary>
+        public string NodeJsDirs
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Path inside of <see cref="NodeJsDirs"/> to node.exe
+        /// </summary>
+        public string NodeJsPath
+        {
+            get;
+            set;
+        }
     }
 }
