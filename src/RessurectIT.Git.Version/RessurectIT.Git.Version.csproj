@@ -23,16 +23,24 @@
         <None Include="Build/*.*" Pack="true" PackagePath="buildCrossTargeting\" />
         <None Include="node_modules/**/*.*" Pack="true" PackagePath="tools\node_modules" />
         <None Include="getVersion.js" Pack="true" PackagePath="tools\" />
+        <None Include="$(ProjectDir)../../LICENSE" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <!-- PACKAGING -->
     <PropertyGroup>
         <PackageTags>git;version;tool</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <IncludeBuildOutput>false</IncludeBuildOutput>
 
         <PackageReleaseNotes>
-            - fixed processing when user account directory or project directory contains spaces in path
-            - fixed default npm registry URL
+            - BREAKING CHANGES
+                - no longer depends on preinstalled *NodeJS*
+                - new dependency `Jering.Javascript.NodeJS`
+                - new dependency `Node.js.redist`
+                - updated all dependecies to latest versions
+                - removed obsoleted dependencies
+            - bug fixes
+                - now correctly generates version only once per build and same version is used for nuget dependecies
         </PackageReleaseNotes>
     </PropertyGroup>
 
