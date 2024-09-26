@@ -33,14 +33,8 @@
         <IncludeBuildOutput>false</IncludeBuildOutput>
 
         <PackageReleaseNotes>
-            - BREAKING CHANGES
-                - no longer depends on preinstalled *NodeJS*
-                - new dependency `Jering.Javascript.NodeJS`
-                - new dependency `Node.js.redist`
-                - updated all dependecies to latest versions
-                - removed obsoleted dependencies
             - bug fixes
-                - now correctly generates version only once per build and same version is used for nuget dependecies
+                - fixed problem when `NuGetPackageFolders` contains `\` at the end of path
         </PackageReleaseNotes>
     </PropertyGroup>
 

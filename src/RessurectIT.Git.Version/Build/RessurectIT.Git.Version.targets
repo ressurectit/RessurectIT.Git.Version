@@ -15,7 +15,7 @@
             <GitVersionToolArgs Condition="'$(GitArgPre)' != ''">$(GitVersionToolArgs) --pre $(GitArgPre)</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgSuffix)' != ''">$(GitVersionToolArgs) --suffix "$(GitArgSuffix)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgCurrentVersion)' != ''">$(GitVersionToolArgs) --currentVersion "$(GitArgCurrentVersion)"</GitVersionToolArgs>
-            <GitVersionToolArgs Condition="'$(NodeJsFolders)' != ''">$(GitVersionToolArgs) --nodeJsDirs "$(NodeJsFolders)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(NodeJsFolders)' != ''">$(GitVersionToolArgs) --nodeJsDirs "$(NodeJsFolders) "</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(NodeJsPath)' != ''">$(GitVersionToolArgs) --nodeJsPath "$(NodeJsPath)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory "$(GitArgWorkingDirectory) "</GitVersionToolArgs>
         </PropertyGroup>

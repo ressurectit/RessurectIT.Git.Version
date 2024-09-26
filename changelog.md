@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 2.0.1 (2024-09-26)
+
+- *RessurectIT.Git.Version*
+    - fixed problem when `NuGetPackageFolders` contains `\` at the end of path
+
 ## Version 2.0.0 (2020-02-02)
 
 ### BREAKING CHANGES

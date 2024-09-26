@@ -57,7 +57,7 @@ namespace RessurectIT.Git.Version
 
                 foreach (string dir in dirs)
                 {
-                    string path = Path.Combine(dir, nodePath);
+                    string path = Path.Combine(dir.TrimEnd(' ').TrimEnd('\\').TrimEnd('/'), nodePath);
 
                     if (File.Exists(path))
                     {
