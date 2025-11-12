@@ -13,12 +13,13 @@
 
     <!-- FRAMEWORK -->
     <PropertyGroup>
-        <TargetFramework>net461</TargetFramework>
+        <TargetFrameworks>net462;net9.0</TargetFrameworks>
     </PropertyGroup>
 
     <!-- FILES -->
     <ItemGroup>
-        <None Include="bin/net461/*.*" Pack="true" PackagePath="tools\" />
+        <None Include="bin/net462/*.*" Pack="true" PackagePath="tools\win\" />
+        <None Include="bin/net462/*.*" Pack="true" PackagePath="tools\dotnet\" />
         <None Include="Build/*.*" Pack="true" PackagePath="build\" />
         <None Include="Build/*.*" Pack="true" PackagePath="buildCrossTargeting\" />
         <None Include="node_modules/**/*.*" Pack="true" PackagePath="tools\node_modules" />
@@ -40,12 +41,11 @@
 
     <!-- NUGET DEPENDENCIES -->
     <ItemGroup>
-        <PackageReference Include="Jering.Javascript.NodeJS" Version="$(JeringJavascriptNodeJS)" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="$(MicrosoftExtensionsConfigurationBinder)" PrivateAssets="All" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="$(MicrosoftExtensionsConfigurationCommandLine)" PrivateAssets="All" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="$(MicrosoftExtensionsConfigurationEnvironmentVariables)" PrivateAssets="All" />
-        <PackageReference Include="Node.js.redist" Version="$(Nodejsredist)" />
-        <PackageReference Include="RessurectIT.NuGet.Deployment" Version="$(RessurectITNuGetDeployment)" PrivateAssets="All" />
+        <PackageReference Include="Jering.Javascript.NodeJS" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" />
+        <PackageReference Include="Node.js.redist" />
+        <PackageReference Include="RessurectIT.NuGet.Deployment" PrivateAssets="All" />
     </ItemGroup>
 
     <!-- NPM INSTALL -->

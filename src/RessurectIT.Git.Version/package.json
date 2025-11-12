@@ -5,7 +5,8 @@
     "main": "getVersion.js",
     "author": "kukjevov",
     "license": "ISC",
+    "type": "module",
     "dependencies": {
-        "npm-git-version": "2.0.0"
+        "npm-git-version": "3.2.0"
     }
 }

@@ -3,15 +3,21 @@
     <PropertyGroup>
         <BuildVersionPath>buildVersion.txt</BuildVersionPath>
         <GitArgBranchName></GitArgBranchName>
-        <GitArgBuildNumber>-1</GitArgBuildNumber>
-        <GitArgTagPrefix>v</GitArgTagPrefix>
-        <GitArgIgnoreBranchPrefix>[a-z]+/|(?:[a-z]+-)+\d+/</GitArgIgnoreBranchPrefix>
-        <GitArgPre>true</GitArgPre>
-        <GitArgSuffix>pre</GitArgSuffix>
+        <GitArgBuildNumber></GitArgBuildNumber>
+        <GitArgTagPrefix></GitArgTagPrefix>
+        <GitArgIgnoreBranchPrefix></GitArgIgnoreBranchPrefix>
+        <GitArgPre></GitArgPre>
+        <GitArgSuffix></GitArgSuffix>
         <GitArgCurrentVersion></GitArgCurrentVersion>
-        <GitVersionToolWorkingDir>$(MSBuildThisFileDirectory)../tools/</GitVersionToolWorkingDir>
-        <GitVersionTool>RessurectIT.Git.Version.exe</GitVersionTool>
+        <GitArgWorkingDirectory></GitArgWorkingDirectory>
+        <GitArgConfigPath></GitArgConfigPath>
+        <GitArgNoIncrement></GitArgNoIncrement>
+        <GitVersionToolWorkingDir Condition="'$(OS)' == 'Windows_NT'">$(MSBuildThisFileDirectory)../tools/win/</GitVersionToolWorkingDir>
+        <GitVersionToolWorkingDir Condition="'$(OS)' != 'Windows_NT'">dotnet $(MSBuildThisFileDirectory)../tools/dotnet/</GitVersionToolWorkingDir>
+        <GitVersionTool Condition="'$(OS)' == 'Windows_NT'">RessurectIT.Git.Version.exe</GitVersionTool>
+        <GitVersionTool Condition="'$(OS)' != 'Windows_NT'">RessurectIT.Git.Version.dll</GitVersionTool>
         <NodeJsFolders>$(NuGetPackageFolders)</NodeJsFolders>
-        <NodeJsPath>node.js.redist/16.13.1/tools/win-x64/node.exe</NodeJsPath>
+        <NodeJsPath Condition="'$(OS)' == 'Windows_NT'">node.js.redist.win/22.13.1/tools/x64/node.exe</NodeJsPath>
+        <NodeJsPath Condition="'$(OS)' != 'Windows_NT'">node.js.redist.linux/22.13.1/tools/x64/node</NodeJsPath>
     </PropertyGroup>
 </Project>

@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 3.0.0 (2025-11-11)
+
+- *RessurectIT.Git.Version*
+    - **BREAKING CHANGES**
+        - minimal version of .net framework is 4.62
+
 ## Version 2.0.1 (2024-09-26)
 
 - *RessurectIT.Git.Version*

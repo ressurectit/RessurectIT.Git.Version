@@ -1,0 +1,14 @@
+<!-- For more info on central package management go to https://devblogs.microsoft.com/nuget/introducing-central-package-management/ -->
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageVersion Include="Jering.Javascript.NodeJS" Version="7.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.10" />
+        <PackageVersion Include="Microsoft.Extensions.Configuration.CommandLine" Version="9.0.10" />
+        <PackageVersion Include="Node.js.redist" Version="22.13.1" />
+        <PackageVersion Include="RessurectIT.NuGet.Deployment" Version="3.0.0" />
+    </ItemGroup>
+</Project>

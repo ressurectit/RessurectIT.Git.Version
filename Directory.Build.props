@@ -1,16 +1,17 @@
 <Project>
-    <Import Project=".\Dependencies.props" />
-
     <!-- BASIC INFO -->
     <PropertyGroup>
-        <Version>2.0.1</Version>
+        <Version>3.0.0</Version>
         <Authors>kukjevov</Authors>
         <Company>RessurectIT</Company>
-        <Copyright>Copyright © 2022</Copyright>
+        <Copyright>Copyright © 2025</Copyright>
     </PropertyGroup>
 
     <!-- BUILD OPTIONS -->
     <PropertyGroup>
+        <Configurations>Debug;Release</Configurations>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <SignAssembly>True</SignAssembly>

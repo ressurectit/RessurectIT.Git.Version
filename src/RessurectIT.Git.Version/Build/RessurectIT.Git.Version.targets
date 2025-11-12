@@ -15,6 +15,8 @@
             <GitVersionToolArgs Condition="'$(GitArgPre)' != ''">$(GitVersionToolArgs) --pre $(GitArgPre)</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgSuffix)' != ''">$(GitVersionToolArgs) --suffix "$(GitArgSuffix)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgCurrentVersion)' != ''">$(GitVersionToolArgs) --currentVersion "$(GitArgCurrentVersion)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgConfigPath)' != ''">$(GitVersionToolArgs) --configPath "$(GitArgConfigPath)"</GitVersionToolArgs>
+            <GitVersionToolArgs Condition="'$(GitArgNoIncrement)' != ''">$(GitVersionToolArgs) --noIncrement "$(GitArgNoIncrement)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(NodeJsFolders)' != ''">$(GitVersionToolArgs) --nodeJsDirs "$(NodeJsFolders) "</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(NodeJsPath)' != ''">$(GitVersionToolArgs) --nodeJsPath "$(NodeJsPath)"</GitVersionToolArgs>
             <GitVersionToolArgs Condition="'$(GitArgWorkingDirectory)' != ''">$(GitVersionToolArgs) --workingDirectory "$(GitArgWorkingDirectory) "</GitVersionToolArgs>
@@ -29,7 +31,12 @@
     </Target>
 
     <Target Name="ObtainGeneratedGitVersion" BeforeTargets="GenerateNuspec;_GetProjectVersion">
-        <Exec Command="type &quot;$(BuildVersionPath)&quot;" ConsoleToMSBuild="true" WorkingDirectory="$(BaseIntermediateOutputPath)" Condition="Exists('$(BaseIntermediateOutputPath)$(BuildVersionPath)')">
+        <Exec Command="type &quot;$(BuildVersionPath)&quot;" ConsoleToMSBuild="true" WorkingDirectory="$(BaseIntermediateOutputPath)" Condition="Exists('$(BaseIntermediateOutputPath)$(BuildVersionPath)') and '$(OS)' == 'Windows_NT'">
+            <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
+            <Output TaskParameter="ConsoleOutput" PropertyName="PackageVersion" />
+        </Exec>
+
+        <Exec Command="cat &quot;$(BuildVersionPath)&quot;" ConsoleToMSBuild="true" WorkingDirectory="$(BaseIntermediateOutputPath)" Condition="Exists('$(BaseIntermediateOutputPath)$(BuildVersionPath)') and '$(OS)' != 'Windows_NT'">
             <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
             <Output TaskParameter="ConsoleOutput" PropertyName="PackageVersion" />
         </Exec>
