@@ -63,7 +63,7 @@ namespace RessurectIT.Git.Version
 
             try
             {
-                string? version = await StaticNodeJSService.InvokeFromFileAsync<string>("getVersion.js",
+                string? version = await StaticNodeJSService.InvokeFromFileAsync<string>("../getVersion.js",
                                                                                         null,
                                                                                         [
                                                                                             new

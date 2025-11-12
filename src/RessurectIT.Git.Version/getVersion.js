@@ -3,7 +3,7 @@ import {VersionsExtractor, processEnvCfg, processCfgFile, updateBuildNumber} fro
 export default async options =>
 {
     const envConfig = processEnvCfg();
-    const fileConfig = processCfgFile({config: options.config ?? envConfig.config, noStdOut: options.noStdOut});
+    const fileConfig = processCfgFile({config: options.config ?? envConfig.config, noStdOut: options.noStdOut, workingDirectory: options.workingDirectory ?? envConfig.workingDirectory});
 
     const args = 
     {

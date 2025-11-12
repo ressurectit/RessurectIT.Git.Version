@@ -19,7 +19,7 @@
     <!-- FILES -->
     <ItemGroup>
         <None Include="bin/net462/*.*" Pack="true" PackagePath="tools\win\" />
-        <None Include="bin/net462/*.*" Pack="true" PackagePath="tools\dotnet\" />
+        <None Include="bin/net9.0/*.*" Pack="true" PackagePath="tools\dotnet\" />
         <None Include="Build/*.*" Pack="true" PackagePath="build\" />
         <None Include="Build/*.*" Pack="true" PackagePath="buildCrossTargeting\" />
         <None Include="node_modules/**/*.*" Pack="true" PackagePath="tools\node_modules" />
@@ -49,7 +49,7 @@
     </ItemGroup>
 
     <!-- NPM INSTALL -->
-    <Target Name="NpmInstall" BeforeTargets="GenerateAdditionalSources">
+    <Target Name="NpmInstall" BeforeTargets="GenerateAdditionalSources" Condition="'$(TargetFramework)' == 'net462'">
         <!-- install all dependencies -->
         <Exec Command="npm install --loglevel error" WorkingDirectory="$(ProjectDir)" />
     </Target>
