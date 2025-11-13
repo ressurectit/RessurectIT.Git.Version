@@ -1,6 +1,12 @@
 # Changelog
 
-## Version 3.0.0 (2025-11-11)
+## Version 3.0.1 (2025-11-13)
+
+- *RessurectIT.Git.Version*
+    - **Bug Fixes**
+        - fixed deployed package, missing sources and wrong build
+
+## Version 3.0.0 (2025-11-13)
 
 - *RessurectIT.Git.Version*
     - **Features**
