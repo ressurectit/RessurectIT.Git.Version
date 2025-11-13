@@ -3,8 +3,15 @@
 ## Version 3.0.0 (2025-11-11)
 
 - *RessurectIT.Git.Version*
+    - **Features**
+        - now supports also unix build using dotnet 9
+        - supports `ngv.config.json` with project dir as default
+        - supports also environment variables from `npm-git-version`
+        - supports `<GitArgConfigPath>` property for specifying `ngv.config.json` path
+        - supports `<GitArgNoIncrement>` property for setting no increment flag
     - **BREAKING CHANGES**
         - minimal version of .net framework is 4.62
+        - no default values for parameters
 
 ## Version 2.0.1 (2024-09-26)
 

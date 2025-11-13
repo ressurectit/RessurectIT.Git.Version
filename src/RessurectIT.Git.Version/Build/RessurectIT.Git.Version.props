@@ -13,7 +13,7 @@
         <GitArgConfigPath></GitArgConfigPath>
         <GitArgNoIncrement></GitArgNoIncrement>
         <GitVersionToolWorkingDir Condition="'$(OS)' == 'Windows_NT'">$(MSBuildThisFileDirectory)../tools/win/</GitVersionToolWorkingDir>
-        <GitVersionToolWorkingDir Condition="'$(OS)' != 'Windows_NT'">dotnet $(MSBuildThisFileDirectory)../tools/dotnet/</GitVersionToolWorkingDir>
+        <GitVersionToolWorkingDir Condition="'$(OS)' != 'Windows_NT'">$(MSBuildThisFileDirectory)../tools/dotnet/</GitVersionToolWorkingDir>
         <GitVersionTool Condition="'$(OS)' == 'Windows_NT'">RessurectIT.Git.Version.exe</GitVersionTool>
         <GitVersionTool Condition="'$(OS)' != 'Windows_NT'">RessurectIT.Git.Version.dll</GitVersionTool>
         <NodeJsFolders>$(NuGetPackageFolders)</NodeJsFolders>
